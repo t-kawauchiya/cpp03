@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/15 13:15:27 by takawauc          #+#    #+#             */
-/*   Updated: 2025/12/17 23:05:23 by takawauc         ###   ########.fr       */
+/*   Created: 2025/12/15 12:40:30 by takawauc          #+#    #+#             */
+/*   Updated: 2025/12/17 21:52:14 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef _SCAVTRAP_H_
+#define _SCAVTRAP_H_
+
 #include "ClapTrap.hpp"
+#include <string>
 
-#include <iostream>
+class ScavTrap : public ClapTrap {
+public:
+  ScavTrap(std::string name);
+  ScavTrap(const ScavTrap &other);
+  ~ScavTrap(void);
+  ScavTrap &operator=(const ScavTrap &other);
 
-int main(void)
-{
-  ClapTrap ct("hoge");
-  std::cout << ct << std::endl;
-  ct.attack("huga");
-  std::cout << ct << std::endl;
-  ct.takeDamage(3);
-  std::cout << ct << std::endl;
-  ct.beRepaired(4);
-  std::cout << ct << std::endl;
-  for (int i = 0; i < 8; i++)
-    ct.attack("huga");
-  std::cout << ct << std::endl;
-  ct.attack("huga");
-  std::cout << ct << std::endl;
+  void attack(const std::string &target);
+  void guardGate(void);
 
-  return 0;
-}
+private:
+};
+
+std::ostream &operator<<(std::ostream &os, const ScavTrap &ct);
+
+#endif
