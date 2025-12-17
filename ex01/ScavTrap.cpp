@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:46:39 by takawauc          #+#    #+#             */
-/*   Updated: 2025/12/17 22:19:07 by takawauc         ###   ########.fr       */
+/*   Updated: 2025/12/17 22:37:32 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,20 @@
 
 #include <iostream>
 
-// class ScavTrap : public ScavTrap {
-// public:
-//   ScavTrap(std::string name);
-//   ScavTrap(const ScavTrap &other);
-//   ~ScavTrap(void);
-//   ScavTrap &operator=(const ScavTrap &other);
-//
-//   void attack(const std::string &target);
-//   void guardGate(void);
-//
-// private:
-// };
-// std::ostream &operator<<(std::ostream &os, const ScavTrap &ct);
-
-// ScavTrap::ScavTrap(std::string name)
-//     : _name(name), _hitPoint(10), _energyPoint(10), _attackDamage(0) {}
-
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20) {}
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20)
+{
+  std::cout << "ScavTrap constructor called.\n";
+}
 
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
 {
+  std::cout << "ScavTrap copy constructor called.\n";
   *this = other;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 {
-
+  std::cout << "ScavTrap copy assignment constructor called.\n";
   if (this != &other)
   {
     this->_name = other._name;
@@ -51,7 +38,10 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other)
   return (*this);
 }
 
-ScavTrap::~ScavTrap(void) {}
+ScavTrap::~ScavTrap(void)
+{
+  std::cout << "ScavTrap destructor called.\n";
+}
 
 void ScavTrap::attack(const std::string& target)
 {
