@@ -6,41 +6,41 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 13:15:27 by takawauc          #+#    #+#             */
-/*   Updated: 2025/12/17 23:02:13 by takawauc         ###   ########.fr       */
+/*   Updated: 2025/12/18 15:09:57 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
-#include "ScavTrap.hpp"
 
 #include <iostream>
 
 int main(void)
 {
-  ScavTrap st("hoge");
-  std::cout << st << std::endl;
-  st.attack("huga");
-  st.takeDamage(3);
-  st.beRepaired(4);
-  st.guardGate();
-  std::cout << st << std::endl;
-  for (int i = 0; i < 47; i++)
-    st.attack("huga");
-  std::cout << st << std::endl;
-  st.attack("huga");
-  std::cout << st << std::endl;
+  ClapTrap ct("hoge");
+  std::cout << ct << std::endl;
+  ct.attack("huga");
+  std::cout << ct << std::endl;
+  ct.takeDamage(3);
+  std::cout << ct << std::endl;
+  ct.beRepaired(4);
+  std::cout << ct << std::endl;
+  ct.setEnergyPoint(0);
+  std::cout << ct << std::endl;
+  ct.attack("huga");
+  std::cout << ct << std::endl;
 
-  FragTrap trap("hoge");
-  std::cout << trap << std::endl;
-  trap.attack("huga");
-  trap.takeDamage(3);
-  trap.beRepaired(4);
-  trap.highFivesGuys();
-  std::cout << trap << std::endl;
-  for (int i = 0; i < 97; i++)
-    trap.attack("huga");
-  std::cout << trap << std::endl;
-  trap.attack("huga");
-  std::cout << trap << std::endl;
+  std::cout << "------------------------------------------\n" << std::endl;
+
+  FragTrap ft("hoge");
+  std::cout << ft << std::endl;
+  ft.attack("huga");
+  ft.takeDamage(3);
+  ft.beRepaired(4);
+  ft.highFivesGuys();
+  std::cout << ft << std::endl;
+  ft.setEnergyPoint(0);
+  std::cout << ft << std::endl;
+  ft.attack("huga");
+  std::cout << ft << std::endl;
   return 0;
 }

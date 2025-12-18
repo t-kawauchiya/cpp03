@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 13:15:27 by takawauc          #+#    #+#             */
-/*   Updated: 2025/12/17 23:04:51 by takawauc         ###   ########.fr       */
+/*   Updated: 2025/12/18 15:06:28 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int main(void)
   std::cout << ct << std::endl;
   ct.beRepaired(4);
   std::cout << ct << std::endl;
-  for (int i = 0; i < 8; i++)
-    ct.attack("huga");
+  ct.setEnergyPoint(0);
   std::cout << ct << std::endl;
   ct.attack("huga");
   std::cout << ct << std::endl;
 
+  std::cout << "------------------------------------------\n" << std::endl;
   ScavTrap st("hoge");
   std::cout << st << std::endl;
   st.attack("huga");
@@ -37,8 +37,7 @@ int main(void)
   st.beRepaired(4);
   st.guardGate();
   std::cout << st << std::endl;
-  for (int i = 0; i < 47; i++)
-    st.attack("huga");
+  st.setEnergyPoint(0);
   std::cout << st << std::endl;
   st.attack("huga");
   std::cout << st << std::endl;

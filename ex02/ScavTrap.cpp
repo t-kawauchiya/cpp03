@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:46:39 by takawauc          #+#    #+#             */
-/*   Updated: 2025/12/17 22:37:32 by takawauc         ###   ########.fr       */
+/*   Updated: 2025/12/18 15:03:51 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,16 @@
 
 #include <iostream>
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20)
+const std::string ScavTrap::kDefaultName = "defaultName";
+
+ScavTrap::ScavTrap()
+    : ClapTrap(kDefaultName, kDefaultHitPoint, kDefaultEnergyPoint, kDefaultAttackDamage)
+{
+  std::cout << "ScavTrap default constructor called.\n";
+}
+
+ScavTrap::ScavTrap(std::string name)
+    : ClapTrap(name, kDefaultHitPoint, kDefaultEnergyPoint, kDefaultAttackDamage)
 {
   std::cout << "ScavTrap constructor called.\n";
 }

@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:40:30 by takawauc          #+#    #+#             */
-/*   Updated: 2025/12/17 00:04:23 by takawauc         ###   ########.fr       */
+/*   Updated: 2025/12/18 14:13:35 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 class ClapTrap
 {
 public:
+  ClapTrap(void);
   ClapTrap(std::string name);
   ~ClapTrap(void);
   ClapTrap(const ClapTrap& other);
@@ -41,6 +42,10 @@ private:
   unsigned int _hitPoint;
   unsigned int _energyPoint;
   unsigned int _attackDamage;
+  static const std::string kDefaultName;
+  static const int kDefaultHitPoint = 10;
+  static const int kDefaultEnergyPoint = 10;
+  static const int kDefaultAttackDamage = 0;
 };
 
 std::ostream& operator<<(std::ostream& os, const ClapTrap& ct);

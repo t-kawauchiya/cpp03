@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:46:39 by takawauc          #+#    #+#             */
-/*   Updated: 2025/12/17 22:50:37 by takawauc         ###   ########.fr       */
+/*   Updated: 2025/12/18 15:02:34 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,16 @@
 
 #include <iostream>
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name, 100, 100, 30)
+const std::string FragTrap::kDefaultName = "defaultName";
+
+FragTrap::FragTrap()
+    : ClapTrap(kDefaultName, kDefaultHitPoint, kDefaultEnergyPoint, kDefaultAttackDamage)
+{
+  std::cout << "FragTrap default constructor called.\n";
+}
+
+FragTrap::FragTrap(std::string name)
+    : ClapTrap(name, kDefaultHitPoint, kDefaultEnergyPoint, kDefaultAttackDamage)
 {
   std::cout << "FragTrap constructor called.\n";
 }

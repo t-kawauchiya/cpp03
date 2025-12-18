@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 13:15:27 by takawauc          #+#    #+#             */
-/*   Updated: 2025/12/17 23:05:23 by takawauc         ###   ########.fr       */
+/*   Updated: 2025/12/18 14:16:42 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int main(void)
 {
-  ClapTrap ct("hoge");
+  ClapTrap ct("clap");
   std::cout << ct << std::endl;
   ct.attack("huga");
   std::cout << ct << std::endl;
@@ -24,8 +24,7 @@ int main(void)
   std::cout << ct << std::endl;
   ct.beRepaired(4);
   std::cout << ct << std::endl;
-  for (int i = 0; i < 8; i++)
-    ct.attack("huga");
+  ct.setEnergyPoint(0);
   std::cout << ct << std::endl;
   ct.attack("huga");
   std::cout << ct << std::endl;
