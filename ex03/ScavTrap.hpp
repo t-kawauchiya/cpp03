@@ -1,0 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/15 12:40:30 by takawauc          #+#    #+#             */
+/*   Updated: 2025/12/18 13:48:30 by takawauc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef _SCAVTRAP_H_
+#define _SCAVTRAP_H_
+
+#include "ClapTrap.hpp"
+
+#include <string>
+
+class ScavTrap : virtual public ClapTrap
+{
+public:
+  ScavTrap(void);
+  ScavTrap(std::string name);
+  ScavTrap(const ScavTrap& other);
+  ~ScavTrap(void);
+  ScavTrap& operator=(const ScavTrap& other);
+
+  void attack(const std::string& target);
+  void guardGate(void);
+
+protected:
+  static const std::string kDefaultName;
+  static const int kDefaultHitPoint = 100;
+  static const int kDefaultEnergyPoint = 100;
+  static const int kDefaultAttackDamage = 30;
+
+private:
+};
+
+std::ostream& operator<<(std::ostream& os, const ScavTrap& ct);
+
+#endif
