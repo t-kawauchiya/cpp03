@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:40:30 by takawauc          #+#    #+#             */
-/*   Updated: 2025/12/18 15:03:13 by takawauc         ###   ########.fr       */
+/*   Updated: 2026/02/04 12:52:09 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,15 @@ public:
 
   void attack(const std::string& target);
   void guardGate(void);
+  void set_is_gate_keeper_mode(bool is_gate_keeper_mode);
+  bool get_is_gate_keeper_mode(void) const;
 
 private:
+  bool _is_gate_keeper_mode;
   static const std::string kDefaultName;
   static const int kDefaultHitPoint = 100;
-  static const int kDefaultEnergyPoint = 100;
-  static const int kDefaultAttackDamage = 30;
+  static const int kDefaultEnergyPoint = 50;
+  static const int kDefaultAttackDamage = 20;
 };
 
 std::ostream& operator<<(std::ostream& os, const ScavTrap& ct);
