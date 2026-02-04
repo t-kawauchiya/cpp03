@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:40:30 by takawauc          #+#    #+#             */
-/*   Updated: 2025/12/18 14:13:35 by takawauc         ###   ########.fr       */
+/*   Updated: 2026/02/04 12:06:11 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ class ClapTrap
 public:
   ClapTrap(void);
   ClapTrap(std::string name);
-  ~ClapTrap(void);
   ClapTrap(const ClapTrap& other);
   ClapTrap& operator=(const ClapTrap& other);
+  ~ClapTrap(void);
 
   void attack(const std::string& target);
   void takeDamage(unsigned int amount);
