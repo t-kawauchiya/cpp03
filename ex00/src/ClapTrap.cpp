@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:46:39 by takawauc          #+#    #+#             */
-/*   Updated: 2025/12/18 14:16:04 by takawauc         ###   ########.fr       */
+/*   Updated: 2026/02/04 12:45:30 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,21 @@ void ClapTrap::setAttackDamage(const unsigned int attackDamaege)
 
 void ClapTrap::attack(const std::string& target)
 {
-  if (this->_energyPoint == 0)
+  if (this->_energyPoint <= 0)
   {
     std::cout << "ClapTrap has not enough emergy point to attack!\n";
+    return;
+  }
+  if (this->_hitPoint <= 0)
+  {
+    std::cout << "ClapTrap has not enough hit point!\n";
     return;
   }
   this->_energyPoint--;
   std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing "
             << this->_attackDamage << " points of damage !\n";
 }
+
 void ClapTrap::takeDamage(unsigned int amount)
 {
   this->_hitPoint -= amount;

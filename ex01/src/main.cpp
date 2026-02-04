@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 13:15:27 by takawauc          #+#    #+#             */
-/*   Updated: 2025/12/18 15:06:28 by takawauc         ###   ########.fr       */
+/*   Updated: 2026/02/04 12:39:00 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int main(void)
   std::cout << ct << std::endl;
   ct.beRepaired(4);
   std::cout << ct << std::endl;
+  std::cout << "set energy point 0." << std::endl;
   ct.setEnergyPoint(0);
   std::cout << ct << std::endl;
   ct.attack("huga");
@@ -37,6 +38,7 @@ int main(void)
   st.beRepaired(4);
   st.guardGate();
   std::cout << st << std::endl;
+  std::cout << "set energy point 0." << std::endl;
   st.setEnergyPoint(0);
   std::cout << st << std::endl;
   st.attack("huga");
