@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:46:39 by takawauc          #+#    #+#             */
-/*   Updated: 2026/02/04 12:45:30 by takawauc         ###   ########.fr       */
+/*   Updated: 2026/02/10 18:45:05 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,16 @@ ClapTrap::ClapTrap(std::string name)
     : _name(name), _hitPoint(kDefaultHitPoint), _energyPoint(kDefaultEnergyPoint),
       _attackDamage(kDefaultAttackDamage)
 {
-  std::cout << "ClapTrap constructor called.\n";
+  std::cout << "ClapTrap parameteric constructor called.\n";
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other)
 {
   std::cout << "ClapTrap copy constructor called.\n";
-  *this = other;
+  this->_name = other._name;
+  this->_hitPoint = other._hitPoint;
+  this->_energyPoint = other._energyPoint;
+  this->_attackDamage = other._attackDamage;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
@@ -123,6 +126,11 @@ void ClapTrap::beRepaired(unsigned int amount)
     std::cout << "ClapTrap has not enough emergy point to be repaired!\n";
     return;
   }
+  if (this->_hitPoint <= 0)
+  {
+    std::cout << "ClapTrap has not enough hit point!\n";
+    return;
+  }
   this->_energyPoint--;
   this->_hitPoint += amount;
   std::cout << "ClapTrap " << this->_name << " be rapaired " << amount << " hit points !\n";
@@ -133,6 +141,6 @@ std::ostream& operator<<(std::ostream& os, const ClapTrap& ct)
   os << "name : " << ct.getName() << "\n";
   os << "hit point : " << ct.getHitPoint() << "\n";
   os << "energy point : " << ct.getEnergyPoint() << "\n";
-  os << "attack damege : " << ct.getAttackDamage() << "\n";
+  os << "attack damege : " << ct.getAttackDamage();
   return os;
 }
