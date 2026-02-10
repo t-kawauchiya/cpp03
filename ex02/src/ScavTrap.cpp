@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:46:39 by takawauc          #+#    #+#             */
-/*   Updated: 2026/02/10 19:19:32 by takawauc         ###   ########.fr       */
+/*   Updated: 2026/02/10 20:02:32 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,6 @@ void ScavTrap::attack(const std::string& target)
 
 void ScavTrap::guardGate(void)
 {
-  if (this->_is_gate_keeper_mode)
-  {
-    std::cout << "ScavTrap is already gate keeper mode!\n";
-    return;
-  }
   if (this->_energyPoint <= 0)
   {
     std::cout << "ScavTrap has not enough emergy point to be gate keeper!\n";
@@ -93,6 +88,12 @@ void ScavTrap::guardGate(void)
     std::cout << "ScavTrap has not enough hit point to be gate keeper!\n";
     return;
   }
+  if (this->_is_gate_keeper_mode)
+  {
+    std::cout << "ScavTrap is already gate keeper mode!\n";
+    return;
+  }
+
   this->_is_gate_keeper_mode = true;
   this->_energyPoint--;
   std::cout << "ScavTrap " << this->_name << " is now in gate keeper mode!\n";
