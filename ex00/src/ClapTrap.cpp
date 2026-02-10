@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:46:39 by takawauc          #+#    #+#             */
-/*   Updated: 2026/02/10 18:45:05 by takawauc         ###   ########.fr       */
+/*   Updated: 2026/02/10 19:11:42 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void ClapTrap::attack(const std::string& target)
   }
   if (this->_hitPoint <= 0)
   {
-    std::cout << "ClapTrap has not enough hit point!\n";
+    std::cout << "ClapTrap has not enough hit point to attack!\n";
     return;
   }
   this->_energyPoint--;
@@ -128,7 +128,7 @@ void ClapTrap::beRepaired(unsigned int amount)
   }
   if (this->_hitPoint <= 0)
   {
-    std::cout << "ClapTrap has not enough hit point!\n";
+    std::cout << "ClapTrap has not enough hit point to be repaired!\n";
     return;
   }
   this->_energyPoint--;

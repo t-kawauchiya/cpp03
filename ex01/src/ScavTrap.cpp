@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:46:39 by takawauc          #+#    #+#             */
-/*   Updated: 2026/02/04 12:53:44 by takawauc         ###   ########.fr       */
+/*   Updated: 2026/02/10 19:09:00 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,11 @@ void ScavTrap::attack(const std::string& target)
     std::cout << "ScavTrap has not enough emergy point to attack!\n";
     return;
   }
+  if (this->_hitPoint <= 0)
+  {
+    std::cout << "ScavTrap has not enough hit point to attack!\n";
+    return;
+  }
   this->_energyPoint--;
   std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing "
             << this->_attackDamage << " points of damage !\n";
@@ -81,9 +86,14 @@ void ScavTrap::guardGate(void)
     std::cout << "ScavTrap is already gate keeper mode!\n";
     return;
   }
-  if (this->_energyPoint == 0)
+  if (this->_energyPoint <= 0)
   {
     std::cout << "ScavTrap has not enough emergy point to be gate keeper!\n";
+    return;
+  }
+  if (this->_hitPoint <= 0)
+  {
+    std::cout << "ScavTrap has not enough hit point to be gate keeper!\n";
     return;
   }
   this->_is_gate_keeper_mode = true;
@@ -96,6 +106,6 @@ std::ostream& operator<<(std::ostream& os, const ScavTrap& ct)
   os << "name : " << ct.getName() << "\n";
   os << "hit point : " << ct.getHitPoint() << "\n";
   os << "energy point : " << ct.getEnergyPoint() << "\n";
-  os << "attack damege : " << ct.getAttackDamage() << "\n";
+  os << "attack damege : " << ct.getAttackDamage();
   return os;
 }

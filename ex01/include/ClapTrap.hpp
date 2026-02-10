@@ -6,12 +6,11 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:40:30 by takawauc          #+#    #+#             */
-/*   Updated: 2025/12/18 14:12:07 by takawauc         ###   ########.fr       */
+/*   Updated: 2026/02/10 18:56:20 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _CLAPTRAP_H_
-#define _CLAPTRAP_H_
+#pragma once
 
 #include <string>
 
@@ -21,13 +20,11 @@ public:
   ClapTrap(void);
   ClapTrap(std::string name);
   ClapTrap(std::string name, int hitPoint, int energyPoint, int attackDamage);
-  ~ClapTrap(void);
   ClapTrap(const ClapTrap& other);
-  ClapTrap& operator=(const ClapTrap& other);
 
-  void attack(const std::string& target);
-  void takeDamage(unsigned int amount);
-  void beRepaired(unsigned int amount);
+  ~ClapTrap(void);
+
+  ClapTrap& operator=(const ClapTrap& other);
 
   std::string getName() const;
   unsigned int getHitPoint() const;
@@ -37,6 +34,10 @@ public:
   void setHitPoint(const unsigned int hitPoint);
   void setEnergyPoint(const unsigned int energyPoint);
   void setAttackDamage(const unsigned int attackDamaege);
+
+  void attack(const std::string& target);
+  void takeDamage(unsigned int amount);
+  void beRepaired(unsigned int amount);
 
 protected:
   std::string _name;
@@ -50,5 +51,3 @@ protected:
 };
 
 std::ostream& operator<<(std::ostream& os, const ClapTrap& ct);
-
-#endif

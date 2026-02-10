@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:46:39 by takawauc          #+#    #+#             */
-/*   Updated: 2025/12/18 14:09:18 by takawauc         ###   ########.fr       */
+/*   Updated: 2026/02/10 19:58:32 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,11 @@ void DiamondTrap::attack(const std::string& target)
     std::cout << "DiamondTrap has not enough emergy point to attack!\n";
     return;
   }
+  if (this->_hitPoint == 0)
+  {
+    std::cout << "DiamondTrap has not enough hit point to attack!\n";
+    return;
+  }
   this->_energyPoint--;
   std::cout << "DiamondTrap " << this->_name << " attacks " << target << ", causing "
             << this->_attackDamage << " points of damage !\n";
@@ -79,6 +84,11 @@ void DiamondTrap::whoAmI(void)
   if (this->_energyPoint == 0)
   {
     std::cout << "DiamondTrap has not enough emergy point to say who I am!\n";
+    return;
+  }
+  if (this->_hitPoint == 0)
+  {
+    std::cout << "DiamondTrap has not enough hit point to say who I am!\n";
     return;
   }
   this->_energyPoint--;
@@ -93,6 +103,6 @@ std::ostream& operator<<(std::ostream& os, const DiamondTrap& ct)
   os << "name : " << ct.getName() << "\n";
   os << "hit point : " << ct.getHitPoint() << "\n";
   os << "energy point : " << ct.getEnergyPoint() << "\n";
-  os << "attack damege : " << ct.getAttackDamage() << "\n";
+  os << "attack damege : " << ct.getAttackDamage();
   return os;
 }
