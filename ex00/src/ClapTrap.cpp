@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:46:39 by takawauc          #+#    #+#             */
-/*   Updated: 2026/02/10 19:11:42 by takawauc         ###   ########.fr       */
+/*   Updated: 2026/02/11 19:53:05 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ ClapTrap::ClapTrap(const ClapTrap& other)
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 {
-  std::cout << "ClapTrap copy assignment constructor called.\n";
+  std::cout << "ClapTrap assignment operator called.\n";
+  if (this == &other)
+    return (*this);
   this->_name = other._name;
   this->_hitPoint = other._hitPoint;
   this->_energyPoint = other._energyPoint;
@@ -113,15 +115,16 @@ void ClapTrap::attack(const std::string& target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-  this->_hitPoint -= amount;
-  if (this->_hitPoint < 0)
+  if (this->_hitPoint < amount)
     this->_hitPoint = 0;
+  else
+    this->_hitPoint -= amount;
   std::cout << "ClapTrap " << this->_name << " take " << amount << " points of damage !\n";
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-  if (this->_energyPoint == 0)
+  if (this->_energyPoint <= 0)
   {
     std::cout << "ClapTrap has not enough emergy point to be repaired!\n";
     return;

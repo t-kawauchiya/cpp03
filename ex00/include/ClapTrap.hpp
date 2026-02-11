@@ -6,11 +6,13 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:40:30 by takawauc          #+#    #+#             */
-/*   Updated: 2026/02/10 17:38:03 by takawauc         ###   ########.fr       */
+/*   Updated: 2026/02/11 15:19:08 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef _CLAP_TRAP_H_
+#define _CLAP_TRAP_H_
+
 #include <string>
 
 class ClapTrap
@@ -51,3 +53,5 @@ private:
 };
 
 std::ostream& operator<<(std::ostream& os, const ClapTrap& ct);
+
+#endif

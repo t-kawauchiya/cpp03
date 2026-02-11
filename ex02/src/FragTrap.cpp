@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:46:39 by takawauc          #+#    #+#             */
-/*   Updated: 2026/02/10 19:26:30 by takawauc         ###   ########.fr       */
+/*   Updated: 2026/02/11 20:29:10 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,22 @@
 
 const std::string FragTrap::kDefaultName = "defaultName";
 
-FragTrap::FragTrap()
-    : ClapTrap(kDefaultName, kDefaultHitPoint, kDefaultEnergyPoint, kDefaultAttackDamage)
+FragTrap::FragTrap() : ClapTrap(kDefaultName)
 {
   std::cout << "FragTrap default constructor called.\n";
+
+  _hitPoint = kDefaultHitPoint;
+  _energyPoint = kDefaultEnergyPoint;
+  _attackDamage = kDefaultAttackDamage;
 }
 
-FragTrap::FragTrap(std::string name)
-    : ClapTrap(name, kDefaultHitPoint, kDefaultEnergyPoint, kDefaultAttackDamage)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
   std::cout << "FragTrap parameteric constructor called.\n";
+
+  _hitPoint = kDefaultHitPoint;
+  _energyPoint = kDefaultEnergyPoint;
+  _attackDamage = kDefaultAttackDamage;
 }
 
 FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other)
@@ -40,32 +46,16 @@ FragTrap::~FragTrap(void)
 
 FragTrap& FragTrap::operator=(const FragTrap& other)
 {
-  std::cout << "FragTrap copy assignment constructor called.\n";
+  std::cout << "FragTrap assignment operator called.\n";
+
   if (this != &other)
     ClapTrap::operator=(other);
   return (*this);
 }
 
-void FragTrap::attack(const std::string& target)
-{
-  if (this->_energyPoint == 0)
-  {
-    std::cout << "FragTrap has not enough emergy point to attack!\n";
-    return;
-  }
-  if (this->_hitPoint <= 0)
-  {
-    std::cout << "FragTrap has not enough hit point to attack!\n";
-    return;
-  }
-  this->_energyPoint--;
-  std::cout << "FragTrap " << this->_name << " attacks " << target << ", causing "
-            << this->_attackDamage << " points of damage !\n";
-}
-
 void FragTrap::highFivesGuys(void)
 {
-  if (this->_energyPoint == 0)
+  if (this->_energyPoint <= 0)
   {
     std::cout << "FragTrap has not enough emergy point to high five !\n";
     return;

@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:40:30 by takawauc          #+#    #+#             */
-/*   Updated: 2026/02/04 12:52:09 by takawauc         ###   ########.fr       */
+/*   Updated: 2026/02/11 19:54:06 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ public:
   ScavTrap(void);
   ScavTrap(std::string name);
   ScavTrap(const ScavTrap& other);
+
   ~ScavTrap(void);
+
   ScavTrap& operator=(const ScavTrap& other);
 
   void attack(const std::string& target);
   void guardGate(void);
-  void set_is_gate_keeper_mode(bool is_gate_keeper_mode);
-  bool get_is_gate_keeper_mode(void) const;
+  bool getIsGateKeeperMode(void) const;
 
 private:
   bool _is_gate_keeper_mode;

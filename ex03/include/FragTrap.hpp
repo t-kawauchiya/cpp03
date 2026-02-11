@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:40:30 by takawauc          #+#    #+#             */
-/*   Updated: 2025/12/18 12:56:09 by takawauc         ###   ########.fr       */
+/*   Updated: 2026/02/11 20:41:08 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ public:
   FragTrap(void);
   FragTrap(std::string name);
   FragTrap(const FragTrap& other);
+
   ~FragTrap(void);
+
   FragTrap& operator=(const FragTrap& other);
 
-  void attack(const std::string& target);
   void highFivesGuys(void);
 
 protected:

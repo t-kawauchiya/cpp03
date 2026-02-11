@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:46:39 by takawauc          #+#    #+#             */
-/*   Updated: 2026/02/10 20:02:44 by takawauc         ###   ########.fr       */
+/*   Updated: 2026/02/11 20:31:54 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,40 @@
 
 const std::string ScavTrap::kDefaultName = "defaultName";
 
-ScavTrap::ScavTrap()
-    : ClapTrap(kDefaultName, kDefaultHitPoint, kDefaultEnergyPoint, kDefaultAttackDamage)
+ScavTrap::ScavTrap() : ClapTrap(kDefaultName), _is_gate_keeper_mode(false)
 {
   std::cout << "ScavTrap default constructor called.\n";
+
+  _hitPoint = kDefaultHitPoint;
+  _energyPoint = kDefaultEnergyPoint;
+  _attackDamage = kDefaultAttackDamage;
 }
 
-ScavTrap::ScavTrap(std::string name)
-    : ClapTrap(name, kDefaultHitPoint, kDefaultEnergyPoint, kDefaultAttackDamage)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name), _is_gate_keeper_mode(false)
 {
-  std::cout << "ScavTrap parameteric constructor called.\n";
+  std::cout << "ScavTrap constructor called.\n";
+
+  _hitPoint = kDefaultHitPoint;
+  _energyPoint = kDefaultEnergyPoint;
+  _attackDamage = kDefaultAttackDamage;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
 {
   std::cout << "ScavTrap copy constructor called.\n";
+
+  this->_is_gate_keeper_mode = other._is_gate_keeper_mode;
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap& other)
+{
+  std::cout << "ScavTrap assignment operator called.\n";
+
+  if (this == &other)
+    return (*this);
+  ClapTrap::operator=(other);
+  this->_is_gate_keeper_mode = other._is_gate_keeper_mode;
+  return (*this);
 }
 
 ScavTrap::~ScavTrap(void)
@@ -38,30 +57,14 @@ ScavTrap::~ScavTrap(void)
   std::cout << "ScavTrap destructor called.\n";
 }
 
-ScavTrap& ScavTrap::operator=(const ScavTrap& other)
-{
-  std::cout << "ScavTrap copy assignment constructor called.\n";
-  if (this != &other)
-  {
-    ClapTrap::operator=(other);
-    this->_is_gate_keeper_mode = other._is_gate_keeper_mode;
-  }
-  return (*this);
-}
-
-void ScavTrap::set_is_gate_keeper_mode(bool is_gate_keeper_mode)
-{
-  this->_is_gate_keeper_mode = is_gate_keeper_mode;
-}
-
-bool ScavTrap::get_is_gate_keeper_mode(void) const
+bool ScavTrap::getIsGateKeeperMode(void) const
 {
   return this->_is_gate_keeper_mode;
 }
 
 void ScavTrap::attack(const std::string& target)
 {
-  if (this->_energyPoint == 0)
+  if (this->_energyPoint <= 0)
   {
     std::cout << "ScavTrap has not enough emergy point to attack!\n";
     return;
@@ -93,7 +96,6 @@ void ScavTrap::guardGate(void)
     std::cout << "ScavTrap is already gate keeper mode!\n";
     return;
   }
-
   this->_is_gate_keeper_mode = true;
   this->_energyPoint--;
   std::cout << "ScavTrap " << this->_name << " is now in gate keeper mode!\n";
@@ -104,6 +106,7 @@ std::ostream& operator<<(std::ostream& os, const ScavTrap& ct)
   os << "name : " << ct.getName() << "\n";
   os << "hit point : " << ct.getHitPoint() << "\n";
   os << "energy point : " << ct.getEnergyPoint() << "\n";
-  os << "attack damege : " << ct.getAttackDamage();
+  os << "attack damege : " << ct.getAttackDamage() << "\n";
+  os << "is gate keeper mode: " << ct.getIsGateKeeperMode();
   return os;
 }
