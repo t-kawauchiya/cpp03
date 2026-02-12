@@ -6,7 +6,7 @@
 /*   By: takawauc <takawauc@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 13:15:27 by takawauc          #+#    #+#             */
-/*   Updated: 2026/02/10 19:21:04 by takawauc         ###   ########.fr       */
+/*   Updated: 2026/02/12 18:42:19 by takawauc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 int main(void)
 {
   {
+    std::cout << "[ClapTrap]\n";
+    std::cout << "NORMAL---------------------------------" << std::endl;
     ClapTrap ct("clap");
     std::cout << ct << std::endl;
     ct.attack("hoge");
@@ -25,8 +27,12 @@ int main(void)
     std::cout << ct << std::endl;
     ct.beRepaired(4);
     std::cout << ct << std::endl;
+    ct.takeDamage(300);
+    std::cout << ct << std::endl;
 
-    std::cout << "\n(set energy point 0.)" << std::endl;
+    std::cout << "\nERROR---------------------------------" << std::endl;
+    std::cout << "\n(set hit point 10. set energy point 0.)" << std::endl;
+    ct.setHitPoint(10);
     ct.setEnergyPoint(0);
     std::cout << ct << std::endl;
     ct.attack("huga");
@@ -41,7 +47,8 @@ int main(void)
     ct.beRepaired(5);
     std::cout << ct << std::endl;
   }
-  std::cout << "------------------------------------------\n" << std::endl;
+  std::cout << "\n[ScavTrap]\n";
+  std::cout << "NORMAL------------------------------------------\n" << std::endl;
   {
     ScavTrap st("hoge");
     std::cout << st << std::endl;
@@ -54,11 +61,15 @@ int main(void)
     st.guardGate();
     std::cout << st << std::endl;
     st.guardGate();
+    std::cout << st << std::endl;
+    st.takeDamage(300);
+    std::cout << st << std::endl;
   }
-  std::cout << "------------------------------------------\n" << std::endl;
+  std::cout << "\nERROR------------------------------------------\n" << std::endl;
   {
     ScavTrap st("hoge");
-    std::cout << "\n(set energy point 0.)" << std::endl;
+    std::cout << "\n(set hit point 10. set energy point 0.)" << std::endl;
+    st.setHitPoint(10);
     st.setEnergyPoint(0);
     std::cout << st << std::endl;
     st.attack("huga");
